@@ -22,6 +22,9 @@ const electronHandler = {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
   },
+  saveFileToProject(name: string, buf: ArrayBuffer): Promise<string> {
+    return ipcRenderer.invoke('saveFileToProject', { name, buffer: buf });
+  },
 };
 
 contextBridge.exposeInMainWorld('electron', electronHandler);

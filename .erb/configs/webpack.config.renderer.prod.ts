@@ -136,6 +136,15 @@ const configuration: webpack.Configuration = {
       'process.type': '"renderer"',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx', '.json'],
+    alias: {
+      '@pages': path.resolve(__dirname, '../../src/renderer/pages'),
+      '@components': path.resolve(__dirname, '../../src/renderer/components'),
+      '@ui': path.resolve(__dirname, '../../src/renderer/ui'),
+      '@lib': path.resolve(__dirname, '../../src/renderer/lib'),
+    },
+  },
 };
 
 export default merge(baseConfig, configuration);

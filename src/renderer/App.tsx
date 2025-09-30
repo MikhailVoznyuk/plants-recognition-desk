@@ -44,6 +44,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Hello />} />
+        <Route path="/reports" element={<Hello />} />
       </Routes>
     </Router>
   );
