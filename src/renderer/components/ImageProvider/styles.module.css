@@ -1,0 +1,25 @@
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  padding: 34px 0;
+}
+
+
+.imagePicker {
+  display: flex;
+  width: 320px;
+  height: 384px;
+  border-radius: 20px;
+  text-align: center;
+  color: #515151;
+  padding: 0 10px;
+}
+
+.imagePicker img {
+  width: 140px;
+  height: 140px;
+}
+

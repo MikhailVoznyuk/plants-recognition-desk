@@ -1,0 +1,40 @@
+.headerToggle {
+  width: 400px;
+  height: 60px;
+  border-radius: 80px;
+  overflow: hidden;
+}
+
+.toggleBar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px
+}
+
+.toggleTab {
+  display: flex;
+  position: relative;
+  width: 100px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #515151;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+.barTab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 100%;
+  background-color: #03C317;
+  border-radius: 100px;
+  transition: 0.3s ease-in-out;
+}
+

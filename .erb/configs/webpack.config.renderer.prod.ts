@@ -39,25 +39,66 @@ const configuration: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.s?(a|c)ss$/,
+        test: /\.css$/i,
+        oneOf: [
+          {
+            test: /\.module\.css$/i,
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  esModule: true,
+                  importLoaders: 1,
+                  modules: {
+                    localIdentName:
+                      process.env.NODE_ENV === 'production'
+                        ? '[hash:base64:6]'
+                        : '[path][name]__[local]',
+                  },
+                },
+              },
+            ],
+          },
+          {
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: { esModule: false, modules: false },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        test: /\.module\.(scss|sass)$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              sourceMap: true,
+              esModule: true,
               importLoaders: 1,
+              modules: {
+                localIdentName: '[path][name]__[local]',
+              },
             },
           },
           'sass-loader',
         ],
-        include: /\.module\.s?(c|a)ss$/,
       },
       {
-        test: /\.s?(a|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        exclude: /\.module\.s?(c|a)ss$/,
+        test: /\.(scss|sass)$/,
+        exclude: /\.module\.(scss|sass)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { esModule: false, modules: false },
+          },
+          'sass-loader',
+        ],
       },
       // Fonts
       {
@@ -143,6 +184,9 @@ const configuration: webpack.Configuration = {
       '@components': path.resolve(__dirname, '../../src/renderer/components'),
       '@ui': path.resolve(__dirname, '../../src/renderer/ui'),
       '@lib': path.resolve(__dirname, '../../src/renderer/lib'),
+      '@types': path.resolve(__dirname, '../../src/types'),
+      '@assets': path.resolve(__dirname, '../../assets'),
+      '@': path.resolve(__dirname, '../../src/'),
     },
   },
 };

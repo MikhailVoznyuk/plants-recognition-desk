@@ -1,8 +1,11 @@
-
-import type {Image} from 'react-native-image-crop-picker'
-
-interface PickedImage extends Omit<Image, 'filename'> {
-    filename?: string | undefined
+interface PickedImage {
+  filename?: string | undefined;
+  fileBuffer: ArrayBuffer;
 }
 
-export default PickedImage
+export interface PickedImagePreview {
+  filename: string | undefined;
+  imagePreview: string;
+}
+
+export default PickedImage;

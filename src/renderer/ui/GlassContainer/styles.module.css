@@ -1,0 +1,20 @@
+.glassContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  transition: 0.3s ease;
+}
+
+.contentContainer {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

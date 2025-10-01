@@ -1,22 +1,5 @@
-import {StyleSheet} from 'react-native'
-import {BlurView} from "@react-native-community/blur";
+import * as styles from './styles.module.css';
 
 export default function BlurLayer() {
-    return (
-        <BlurView
-            style={styles.blurLayer}
-            blurType='light'
-            blurAmount={10}
-        />
-    )
+  return <div className={styles.blurLayer} />;
 }
-
-const styles = StyleSheet.create({
-
-    blurLayer: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(255, 255, 255, 0.24)'
-    }
-})

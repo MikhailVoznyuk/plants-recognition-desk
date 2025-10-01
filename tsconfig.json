@@ -18,9 +18,13 @@
       "@pages/*": ["src/renderer/pages/*"],
       "@components/*": ["src/renderer/components/*"],
       "@ui/*": ["src/renderer/ui/*"],
-      "@lib/*": ["src/renderer/lib/*"]
+      "@lib/*": ["src/renderer/lib/*"],
+      "@types/*": ["src/types/*"],
+      "@assets/*": ["assets/*"],
+      "@/*": ["src/*"]
     }
   },
+  "include": ["src", ".erb"],
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"],
 
 }

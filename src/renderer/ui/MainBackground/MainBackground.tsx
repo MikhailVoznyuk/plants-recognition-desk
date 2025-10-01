@@ -1,35 +1,16 @@
-import React from 'react'
-import {View, ImageBackground, StyleSheet} from "react-native";
+import React from 'react';
+import * as styles from './styles.module.css';
 
-export default function MainBackground({children}: {children: React.ReactNode}) {
-    return (
-        <ImageBackground
-            source={require('@/assets/images/background.jpg')}
-            blurRadius={0}
-            style={styles.backgroundImage}
-        >
-            <View style={styles.backgroundBlur}></View>
-            {children}
-        </ImageBackground>
-    )
-
+export default function MainBackground({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={styles.container}>
+      <div className={styles.backgroundImage} />
+      <div className={styles.backgroundBlur} />
+      <div className={styles.contentContainer}>{children}</div>
+    </div>
+  );
 }
-
-const styles = StyleSheet.create({
-    backgroundImage: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-
-    },
-    backgroundBlur: {
-        position: "absolute",
-        width: "100%",
-        height: "100%",
-        top: 0,
-        left: 0,
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
-        elevation: 0,
-    },
-
-})
