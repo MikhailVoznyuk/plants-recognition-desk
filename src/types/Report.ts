@@ -11,11 +11,11 @@ export type ReportObject = {
     description: string,
 }
 
-type Report = {
+export type Report = {
     id: string;
     date: string;
-    imageFile: string | undefined;
+    imageFile: string;
     objects: ReportObject[];
 }
 
-export default Report;
+

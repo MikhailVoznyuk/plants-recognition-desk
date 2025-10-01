@@ -1,0 +1,19 @@
+.loadingContainer {
+  border-radius: 20px;
+}
+
+.loadingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.linkButton {
+  background-color: #03C317;
+  font-size: 20px;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+

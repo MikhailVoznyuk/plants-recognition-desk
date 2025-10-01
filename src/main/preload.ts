@@ -1,8 +1,11 @@
 // Disable no-unused-vars, broken for spread args
 /* eslint no-unused-vars: off */
+import type { Report } from '@/types/Report';
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
 export type Channels = 'ipc-example';
+
+type SavedFile = { path: string; fileUrl: string; name: string };
 
 const electronHandler = {
   ipcRenderer: {
@@ -22,8 +25,24 @@ const electronHandler = {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
   },
-  saveFileToProject(name: string, buf: ArrayBuffer): Promise<string> {
+  reports: {
+    save: (r: Omit<Report, 'id' | 'date'> & Partial<Pick<Report, 'id' | 'date'>>) =>
+      ipcRenderer.invoke('reports.save', r) as Promise<Report>,
+    get: (id: string) => ipcRenderer.invoke('reports.get', id) as Promise<Report | null>,
+    list: () => ipcRenderer.invoke('reports.list') as Promise<Report[]>,
+    delete: (id: string) => ipcRenderer.invoke('reports.delete', id) as Promise<boolean>,
+  },
+
+  saveFileToProject(name: string, buf: ArrayBuffer): Promise<SavedFile> {
     return ipcRenderer.invoke('saveFileToProject', { name, buffer: buf });
+  },
+  files: {
+    readAsDataUrl(absPath: string) {
+      return ipcRenderer.invoke(
+        'file.readAsDataUrl',
+        absPath,
+      ) as Promise<string>;
+    },
   },
 };
 

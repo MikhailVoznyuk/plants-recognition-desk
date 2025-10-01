@@ -1,18 +1,17 @@
-import type Report from '@/types/Report';
-import type { ReportObject } from '@/types/Report';
+import type { Report, ReportObject } from '@/types/Report';
 import type PickedImage from '@/types/PickedImage';
+
 
 const objects: ReportObject[] = [
   {
     plantType: 'tree',
-    species: 'Betula',
-    healthScore: 1,
-    cavityScore: 2,
+    species: 'Quercus robur',
+    healthScore: 2,
+    cavityScore: 1,
     crackScore: 1,
     mechDamageScore: 2,
     fungusScore: 1,
-    description:
-      'Дерево является здоровым по большинству показателей. Присутствуют полости, не представляющие опасности для жизни дерева. Показатели гнили в норме. ',
+    description: 'Небольшие трещины на коре',
   },
   {
     plantType: 'shrub',
@@ -40,16 +39,18 @@ const objects: ReportObject[] = [
 export default async function createReport(
   image: PickedImage,
 ): Promise<Report> {
+
   const currentDate = new Date();
   const strDate = `${currentDate.getDate()}.${currentDate.getMonth()}. ${currentDate.getFullYear()}`;
   const timeout = await new Promise((resolve, reject) => {
     setTimeout(() => resolve(1), 5000);
   });
+  const loadedFile = await window.electron.saveFileToProject(image.filename, image.fileBuffer);
 
   return {
-    id: Math.floor(Math.random() * 1000),
+    id: crypto.randomUUID(),
     date: strDate,
-    imageFile: image.path,
+    imageFile: loadedFile.fileUrl,
     objects,
   };
 }

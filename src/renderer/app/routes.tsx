@@ -1,7 +1,7 @@
 import { createHashRouter, RouterProvider } from 'react-router';
 import RootLayout from '@/renderer/layouts/RootLayout';
 import HomePage from '@pages/home/index';
-import ReportPage from '@pages/report/index';
+import ReportPage from '@pages/reports/index';
 import AboutPage from '@pages/about/index';
 
 const router = createHashRouter([

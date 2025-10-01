@@ -1,10 +1,10 @@
 interface PickedImage {
-  filename?: string | undefined;
+  filename: string;
   fileBuffer: ArrayBuffer;
 }
 
 export interface PickedImagePreview {
-  filename: string | undefined;
+  filename: string;
   imagePreview: string;
 }
 
