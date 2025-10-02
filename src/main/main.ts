@@ -17,6 +17,7 @@ import { resolveHtmlPath } from './util';
 import './reportStore';
 import './save-file-ipc';
 import './file-bridge';
+import './image-queue';
 
 class AppUpdater {
   constructor() {

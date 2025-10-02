@@ -1,0 +1,23 @@
+.sectionTitle {
+  margin: 0;
+  padding: 14px 18px;
+  background: #03C317;
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 400;
+  border-radius: 40px;
+}
+
+.containerFluid {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.container {
+  border-radius: 20px;
+  width: 600px;
+}

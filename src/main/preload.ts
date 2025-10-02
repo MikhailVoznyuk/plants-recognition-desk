@@ -33,8 +33,11 @@ const electronHandler = {
     delete: (id: string) => ipcRenderer.invoke('reports.delete', id) as Promise<boolean>,
   },
 
-  saveFileToProject(name: string, buf: ArrayBuffer): Promise<SavedFile> {
-    return ipcRenderer.invoke('saveFileToProject', { name, buffer: buf });
+  saveFileToProject(name: string, abOrB64: ArrayBuffer | string): Promise<SavedFile> {
+    if (typeof abOrB64 === 'string') {
+      return ipcRenderer.invoke('saveFileToProject', { name, base64: abOrB64 });
+    }
+    return ipcRenderer.invoke('saveFileToProject', { name, buffer: abOrB64 });
   },
   files: {
     readAsDataUrl(absPath: string) {
@@ -42,6 +45,19 @@ const electronHandler = {
         'file.readAsDataUrl',
         absPath,
       ) as Promise<string>;
+    },
+  },
+  queue: {
+    addFromBuffer: (name: string, buffer: ArrayBuffer, mime?: string) =>
+      ipcRenderer.invoke('queue.addFromBuffer', { name, buffer, mime }),
+    list: () => ipcRenderer.invoke('queue.list'),
+    retry: (id: string) => ipcRenderer.invoke('queue.retry', id),
+    clearDone: () => ipcRenderer.invoke('queue.clearDone'),
+    triggerSync: () => ipcRenderer.send('queue.triggerSync'),
+    onUpdate: (cb: (items: any) => void) => {
+      const sub = (_e: any, items: any) => cb(items);
+      ipcRenderer.on('queue:update', sub);
+      return () => ipcRenderer.removeListener('queue:update', sub);
     },
   },
 };

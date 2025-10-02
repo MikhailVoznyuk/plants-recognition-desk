@@ -5,6 +5,7 @@ import * as styles from './styles.module.css';
 type GlassContainerProps = {
   className?: string;
   contentContainerClassName?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 };
 
@@ -13,7 +14,10 @@ export default function GlassContainer({
   ...props
 }: GlassContainerProps) {
   return (
-    <div className={[styles.glassContainer, props.className ?? ''].join(' ')}>
+    <div
+      style={props.style ?? {}}
+      className={[styles.glassContainer, props.className ?? ''].join(' ')}
+    >
       <BlurLayer />
 
       <div

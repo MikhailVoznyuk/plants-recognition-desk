@@ -30,7 +30,7 @@ export default function ReportPreview({ reportData }: { reportData: Report }) {
           >{`Объектов на фото: ${reportData.objects.length}`}</span>
         </div>
       </div>
-      <Link className={styles.button} to={{ pathname: '/reports/[id]' }}>
+      <Link className={styles.button} to={`../reports/${reportData.id}`}>
         Открыть
       </Link>
     </GlassContainer>

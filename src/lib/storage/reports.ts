@@ -1,3 +1,4 @@
+
 import type Report from '@/types/Report';
 
 export async function getAllReports(): Promise<object[]> {

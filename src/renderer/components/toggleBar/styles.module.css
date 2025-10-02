@@ -1,8 +1,11 @@
 .headerToggle {
+  position: relative;
+  z-index: 1;
   width: 400px;
   height: 60px;
   border-radius: 80px;
   overflow: hidden;
+  margin: 20px 0;
 }
 
 .toggleBar {

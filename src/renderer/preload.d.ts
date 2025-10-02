@@ -28,6 +28,14 @@ declare global {
       files: {
         readAsDataUrl(absPath: string): Promise<string>;
       };
+      queue: {
+        addFromBuffer(name: string, buffer: ArrayBuffer, mime?: string): Promise<any>;
+        list(): Promise<any>;
+        retry(id: string): Promise<any>;
+        clearDone(): void;
+        triggerSync(): void;
+        onUpdate(cb: (items: any) => void)
+      }
     };
   }
 }

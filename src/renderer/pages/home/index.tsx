@@ -40,6 +40,12 @@ export default function HomePage() {
     }
   }, [isSubmitted, reportsCounter, images.current.length]);
 
+  useEffect(() => {
+    const onOnline = () => window.electron.queue.triggerSync();
+    window.addEventListener('online', onOnline);
+    return () => window.removeEventListener('online', onOnline);
+  }, []);
+
   return (
     <div className={styles.container}>
       {!isSubmitted ?

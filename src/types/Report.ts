@@ -18,4 +18,13 @@ export type Report = {
     objects: ReportObject[];
 }
 
+export type LoadedReport = {
+  id: string;
+  date: string;
+  objects: ReportObject[];
+  image: {
+    mime: string;
+    base64: string;
+  }
+}
 

@@ -3,7 +3,7 @@ import type { Report } from '@/types/Report';
 
 import ReportsContainer from '@components/ReportsContainer/ReportsContainer';
 
-export default function ReportPage() {
+export default function ReportsPage() {
   const [reports, setReports] = React.useState<Report[]>([]);
   React.useEffect(() => {
     window.electron.reports
